@@ -14,7 +14,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.Statement;
 import java.sql.Timestamp;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;

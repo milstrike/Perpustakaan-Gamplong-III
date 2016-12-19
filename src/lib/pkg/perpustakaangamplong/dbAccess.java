@@ -1276,7 +1276,7 @@ public class dbAccess {
     }
     
     public void exportLaporanManajemen() throws Exception{
-        final int DEFAULT_BUFFER_SIZE = 100000; //15KB
+        final int DEFAULT_BUFFER_SIZE = 100000; 
         
         String sql;
         String queryBuilder = globalVariabel.queryBuilder;
