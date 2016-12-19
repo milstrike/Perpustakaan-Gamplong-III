@@ -86,7 +86,7 @@ public class loginAplikasi extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("<html>\n<p align=\"justify\">\n* Apabila tidak dapa melakukan login, harap hubungi Administrator Perpustakaan untuk mendapatkan bantuan lebih lanjut\n</p>\n</html>");
+        jLabel2.setText("<html>\n<p align=\"justify\">\n* Apabila tidak dapat melakukan login, harap hubungi Administrator Perpustakaan untuk mendapatkan bantuan lebih lanjut\n</p>\n</html>");
 
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/pkg/perpustakaangamplong/x-mark-16.png"))); // NOI18N
         closeButton.setToolTipText("Keluar dari Aplikasi");

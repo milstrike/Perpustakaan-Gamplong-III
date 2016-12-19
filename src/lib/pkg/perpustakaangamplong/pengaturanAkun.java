@@ -5,6 +5,9 @@
  */
 package lib.pkg.perpustakaangamplong;
 
+import java.awt.Color;
+
+
 /**
  *
  * @author milstrike
@@ -14,6 +17,7 @@ public class pengaturanAkun extends javax.swing.JFrame {
     /**
      * Creates new form pengaturanAkun
      */
+    public dbAccess db = new dbAccess();
     public pengaturanAkun() {
         initComponents();
         initLevel0();
@@ -28,6 +32,8 @@ public class pengaturanAkun extends javax.swing.JFrame {
         viewNama.setText(globalVariabel.ProfilName);
         viewID.setText(globalVariabel.IDUser);
         viewUsername.setText(globalVariabel.usernameAuth);
+        passwordError.setVisible(false);
+        passwordError.setForeground(Color.red);
     }
 
     /**
@@ -51,6 +57,7 @@ public class pengaturanAkun extends javax.swing.JFrame {
         changePassword = new javax.swing.JCheckBox();
         viewPassword1 = new javax.swing.JPasswordField();
         viewPassword2 = new javax.swing.JPasswordField();
+        passwordError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Konfigurasi Akun");
@@ -71,6 +78,11 @@ public class pengaturanAkun extends javax.swing.JFrame {
         jLabel5.setText("Re-type Password");
 
         btnSimpanPerubahan.setText("Simpan Perubahan");
+        btnSimpanPerubahan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanPerubahanActionPerformed(evt);
+            }
+        });
 
         changePassword.setText("Ubah Password");
         changePassword.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +95,10 @@ public class pengaturanAkun extends javax.swing.JFrame {
 
         viewPassword2.setEditable(false);
 
+        passwordError.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        passwordError.setForeground(new java.awt.Color(153, 0, 0));
+        passwordError.setText("Password tidak sama!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,7 +107,8 @@ public class pengaturanAkun extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSimpanPerubahan, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(changePassword)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
@@ -101,14 +118,16 @@ public class pengaturanAkun extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(viewNama)
-                                .addComponent(viewUsername)
-                                .addComponent(viewID, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                .addComponent(viewPassword1))
-                            .addComponent(viewPassword2)))
-                    .addComponent(changePassword))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(viewPassword2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(viewNama)
+                                    .addComponent(viewUsername)
+                                    .addComponent(viewID, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                                    .addComponent(viewPassword1))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(passwordError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,11 +152,13 @@ public class pengaturanAkun extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(viewPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(passwordError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(changePassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(btnSimpanPerubahan)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -155,6 +176,32 @@ public class pengaturanAkun extends javax.swing.JFrame {
             globalVariabel.passwordEditor = 0;
         }
     }//GEN-LAST:event_changePasswordActionPerformed
+
+    private void btnSimpanPerubahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanPerubahanActionPerformed
+        globalVariabel.changeName = viewNama.getText();
+        if(globalVariabel.passwordEditor == 1){
+            String password1 = new String(viewPassword1.getPassword());
+            String password2 = new String(viewPassword2.getPassword());
+        if(password1.equalsIgnoreCase("") | password2.equalsIgnoreCase("")){
+            passwordError.setVisible(true);
+            passwordError.setText("Form password tidak boleh kosong");
+            passwordError.setForeground(Color.red);
+        }
+        else if(password1.equalsIgnoreCase(password2)){
+            globalVariabel.changePass = password1;
+            db.updateDataSelfUserWithPassword();
+        } else {
+            passwordError.setVisible(true);
+            passwordError.setText("Password tidak sama!");
+            passwordError.setForeground(Color.red);
+        }
+        }
+        else{
+            db.updateDataSelfUserWithoutPassword();
+        }
+        viewNama.setText(globalVariabel.ProfilName);
+        globalVariabel.passwordEditor = 0;
+    }//GEN-LAST:event_btnSimpanPerubahanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +246,7 @@ public class pengaturanAkun extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel passwordError;
     public static javax.swing.JTextField viewID;
     public static javax.swing.JTextField viewNama;
     private javax.swing.JPasswordField viewPassword1;

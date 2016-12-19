@@ -21,6 +21,14 @@ public class globalVariabel {
     public static int cekPengembalian = 0;
     public static int exporter = 0;
     
+    //topikBantuan
+    public static String topikBantuan = "";
+    public static String kontenBantuan = "";
+    
+    //pengubahan akun
+    public static String changeName = "";
+    public static String changePass = "";
+    
     
     //userAuthentification
     public static String usernameAuth = "";

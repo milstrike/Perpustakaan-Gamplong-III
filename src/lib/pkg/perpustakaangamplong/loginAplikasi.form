@@ -181,7 +181,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;p align=&quot;justify&quot;&gt;&#xa;* Apabila tidak dapa melakukan login, harap hubungi Administrator Perpustakaan untuk mendapatkan bantuan lebih lanjut&#xa;&lt;/p&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;p align=&quot;justify&quot;&gt;&#xa;* Apabila tidak dapat melakukan login, harap hubungi Administrator Perpustakaan untuk mendapatkan bantuan lebih lanjut&#xa;&lt;/p&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="closeButton">

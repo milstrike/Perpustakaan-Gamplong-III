@@ -96,6 +96,7 @@ public class Administrator extends javax.swing.JFrame {
         panelUser.setVisible(false);
         panelManajemen.setVisible(false);
         panelPengaturan.setVisible(false);
+        db.clearJudulBuku();
     }
     
     public void initLevel4(){
@@ -2132,6 +2133,11 @@ public class Administrator extends javax.swing.JFrame {
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("[ Atur Ulang Aplikasi ]"));
 
         btnResetAplikasi.setText("Atur Ulang Aplikasi");
+        btnResetAplikasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetAplikasiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -3065,6 +3071,25 @@ public class Administrator extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void btnResetAplikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetAplikasiActionPerformed
+        if (JOptionPane.showConfirmDialog(null, 
+            "Data yang akan dihapus: Anggota, Detail Sirkulasi, Katalog, Laporan Denda, dan Sirkulasi.\nSetelah selesai menghapus data, aplikasi akan restart. \nLanjutkan?", "Konfirmasi Reset Aplikasi", 
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            db.clearDataAnggota();
+            db.clearDataDetailSirkulasi();
+            db.clearKatalog();
+            db.clearLaporanDenda();
+            db.clearSirkulasi();
+            JOptionPane.showMessageDialog(null, "Data berhasil di hapus!","Hapus Berhasil",JOptionPane.INFORMATION_MESSAGE);
+            try {
+                restartApplication();
+            } catch (IOException | URISyntaxException ex) {
+                Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnResetAplikasiActionPerformed
 
     public void restartApplication() throws IOException, URISyntaxException
 {

@@ -31,20 +31,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jTextField1" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="329" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="428" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="329" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane3" pref="428" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -53,18 +44,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane3" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="480" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="363" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -72,13 +58,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cari Bantuan!"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -86,7 +65,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="jList1">
+        <Component class="javax.swing.JList" name="topikBantuan">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="5">
@@ -97,9 +76,14 @@
                 <StringItem index="4" value="Bantuan 5"/>
               </StringArray>
             </Property>
+            <Property name="selectionMode" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="topikBantuanMouseClicked"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -109,20 +93,21 @@
         <Property name="text" type="java.lang.String" value="Topik Bantuan:"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextPane" name="kontenBantuan">
           <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="lineWrap" type="boolean" value="true"/>
-            <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula lacus, vestibulum tempor nulla nec, placerat auctor nisl. Mauris sed dui tortor. Mauris pulvinar magna id pretium volutpat. Duis consectetur ipsum ut odio sodales posuere. Vestibulum nec lorem id sapien convallis auctor. Phasellus ac libero ac sapien placerat sollicitudin. Vestibulum sodales quam quis sapien consequat venenatis. Cras vestibulum orci eget tortor aliquam, non gravida lacus vulputate. Mauris vel bibendum diam. Duis ultrices, odio et elementum aliquet, leo felis luctus arcu, ut blandit nisi sapien elementum sem.&#xa;&#xa;Nulla semper nisi nec mattis ornare. Donec luctus luctus turpis, sit amet tristique leo auctor id. Proin odio nulla, iaculis nec semper nec, scelerisque sed ligula. Nullam vitae blandit lorem. Aenean quam dolor, malesuada molestie dapibus vulputate, viverra in dolor. Mauris convallis, est ut iaculis fermentum, justo metus egestas massa, in tincidunt odio dolor sit amet neque. Proin luctus ut velit nec commodo. Etiam mollis tincidunt rhoncus. Ut eget ipsum nulla. Curabitur lacus neque, aliquam et magna a, porta rutrum nunc. Nam lobortis diam ut metus euismod ullamcorper. Integer ut massa dolor. Sed eu augue vitae lacus cursus tristique.&#xa;&#xa;Duis sodales ligula pellentesque, auctor sem nec, ullamcorper dui. Nullam vel tincidunt nisi, eu ornare quam. Duis tempor convallis pharetra. In posuere elit sit amet dui congue, sed cursus turpis pharetra. Donec et tempus metus. Aenean congue lacus vitae metus aliquet facilisis. Pellentesque vitae tempor enim. Quisque egestas sapien id metus vehicula, ut laoreet massa hendrerit. Quisque scelerisque urna a nulla malesuada, ut ornare eros egestas.&#xa;&#xa;Duis sed massa sed velit porta blandit. Duis at eleifend massa. Nam urna dolor, dictum eget lectus id, suscipit ullamcorper magna. Proin sollicitudin, turpis a sodales condimentum, lacus enim rhoncus dui, nec placerat sem dolor nec mauris. Proin eu dui sed metus viverra ultrices et et justo. In id mi tincidunt, feugiat metus nec, pulvinar mauris. Aenean facilisis risus interdum euismod tristique. Praesent eu mauris quam. Donec consequat eu mi ac dapibus. Sed luctus blandit sapien eget varius. Quisque lobortis orci sed sem scelerisque volutpat.&#xa;&#xa;Donec nec ligula eu felis auctor lacinia. Pellentesque sit amet tincidunt sem. Proin felis orci, feugiat id scelerisque eu, mollis pulvinar dui. Cras dapibus mauris sapien, sed tempor augue feugiat sit amet. Suspendisse convallis libero ac elit placerat lacinia. Donec mattis tortor in lorem ullamcorper fringilla. Nullam hendrerit nibh at erat auctor pellentesque. Curabitur non ex at orci lobortis mattis ac eu sem. Duis at felis nisl. Phasellus finibus, eros in laoreet faucibus, mauris turpis vestibulum ipsum, eu euismod quam ex quis erat. Vestibulum sit amet volutpat felis."/>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Pilih topik bantuan di samping."/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

@@ -5,6 +5,7 @@
  */
 package lib.pkg.perpustakaangamplong;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,6 +16,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -1310,6 +1313,133 @@ public class dbAccess {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public void clearDataAnggota(){
+        String SQL = "DELETE FROM _anggota";
+        try (Connection conn = this.internalconnect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void clearDataDetailSirkulasi(){
+        String SQL = "DELETE FROM _detail_sirkulasi";
+        try (Connection conn = this.internalconnect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void clearKatalog(){
+        String SQL = "DELETE FROM _katalog";
+        try (Connection conn = this.internalconnect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void clearLaporanDenda(){
+        String SQL = "DELETE FROM _laporan_denda";
+        try (Connection conn = this.internalconnect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void clearSirkulasi(){        
+        String SQL = "DELETE FROM _sirkulasi";
+        try (Connection conn = this.internalconnect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void updateDataSelfUserWithoutPassword(){
+        String ID = globalVariabel.IDUser;
+        String Nama = globalVariabel.changeName;
+        
+        String SQL = "UPDATE _user SET _profil_name='"+Nama+"' WHERE _id_user='"+ID+"'";
+        
+        try (Connection conn = this.internalconnect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+     pengaturanAkun.passwordError.setText("Berhasil mengupdate Data!");
+     pengaturanAkun.passwordError.setForeground(Color.green);
+     pengaturanAkun.passwordError.setVisible(true);
+     globalVariabel.ProfilName = Nama;
+    }
+    
+    public void updateDataSelfUserWithPassword(){
+        String ID = globalVariabel.IDUser;
+        String Nama = globalVariabel.changeName;
+        String Password = globalVariabel.changePass;
+                
+        String SQL = "UPDATE _user SET _profil_name='"+Nama+"', _password='"+Password+"' WHERE _id_user='"+ID+"'";
+        
+        try (Connection conn = this.internalconnect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)){
+            pstmt.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+     pengaturanAkun.passwordError.setText("Berhasil mengupdate Data!");
+     pengaturanAkun.passwordError.setForeground(Color.green);
+     pengaturanAkun.passwordError.setVisible(true);
+     globalVariabel.ProfilName = Nama;
+    }
+    
+    public void showTopikBantuan(){
+        String sql = "SELECT * FROM _bantuan";
+        DefaultListModel model = new DefaultListModel();
+        String title;
+        
+        try (Connection conn = this.internalconnect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                title = rs.getString("_title");
+                model.addElement(title);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        Bantuan.topikBantuan.setModel(model);
+    }
+    
+    public void showKontenBantuan(){
+        String topik = globalVariabel.topikBantuan;
+        String sql = "SELECT * FROM _bantuan WHERE _title='"+topik+"'";
+        
+        String konten = "";
+        
+        try (Connection conn = this.internalconnect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                konten = rs.getString("_content");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        globalVariabel.kontenBantuan = konten;
     }
 }
 
