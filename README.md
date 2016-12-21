@@ -1,9 +1,9 @@
 # Perpustakaan-Gamplong-III
 
-#Deskripsi
+<h3>Deskripsi</h3>
 Aplikasi Perpustakaan Gamplong III adalah Aplikasi Manajemen Sirkulasi Perpustakaan secara digital yang dibangun dengan menggunakan jAVA dan menggunakan database lokal SQLite. Aplikasi bersifat open source sehingga siapapun dapat mengembangkan aplikasi ini menjadi lebih baik lagi. Secara primer, aplikasi ini dikembangkan untuk perpustakaan lokal Desa Gamplong Kulon Progo.
 
-#Fitur
+<h3>Fitur</h3>
 Fitur-fitur aplikasi Perpustakaan Gamplong III adalah sebagai berikut:<br/>
 1. Tingkatan pengguna meliputi Anggota, Operator Perpustakaan, Kepala Perpustakaan, dan Administrator Perpustakaan<br/>
 2. Manajemen Sirkulasi<br/>
