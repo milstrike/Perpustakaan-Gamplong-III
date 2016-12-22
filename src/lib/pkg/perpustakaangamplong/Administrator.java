@@ -35,6 +35,7 @@ public class Administrator extends javax.swing.JFrame {
     public dbAccess db = new dbAccess();
     public mainFunction mf = new mainFunction();
     
+    
     public Administrator() {
         initComponents();
         initLevel0();

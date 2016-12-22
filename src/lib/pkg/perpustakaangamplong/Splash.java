@@ -5,7 +5,6 @@
  */
 package lib.pkg.perpustakaangamplong;
 
-import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Toolkit;
 

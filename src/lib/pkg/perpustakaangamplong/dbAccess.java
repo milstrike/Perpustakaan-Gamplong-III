@@ -359,7 +359,7 @@ public class dbAccess {
         String Stok = globalVariabel.StokKatalog;
         String LokasiRak = globalVariabel.LokasiRakKatalog;
         String tanggal = new GeneralConfiguration().getDate();
-        String SQL = "INSERT INTO _katalog (_id, _id_katalog, _judul, _pengarang, _penerbit, _isbn, _stok, _rak, tanggal) VALUES (NULL, '"+ID+"', '"+Judul+"', '"+Pengarang+"', '"+Penerbit+"', '"+ISBN+"', '"+Stok+"', '"+LokasiRak+"', '"+tanggal+"')";
+        String SQL = "INSERT INTO _katalog (_id, _id_katalog, _judul, _pengarang, _penerbit, _isbn, _stok, _rak, _tanggal) VALUES (NULL, '"+ID+"', '"+Judul+"', '"+Pengarang+"', '"+Penerbit+"', '"+ISBN+"', '"+Stok+"', '"+LokasiRak+"', '"+tanggal+"')";
         
         try (Connection conn = this.internalconnect();
             PreparedStatement pstmt = conn.prepareStatement(SQL)){
