@@ -918,6 +918,19 @@ public class dbAccess {
         }            
     }
     
+        
+    public void deleteSirkulasi(){
+        String SQL3 = "DELETE FROM _sirkulasi WHERE _id_sirkulasi='"+globalVariabel.IDSirkulasi+"'";
+        try (Connection conn3 = this.internalconnect();
+            PreparedStatement pstmt3 = conn3.prepareStatement(SQL3)){
+            pstmt3.executeUpdate();
+         }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+     showDaftarSirkulasi();
+    }
+    
+    
     public void clearJudulBuku(){
         String SQL3 = "DELETE FROM _temp_judul";
         try (Connection conn3 = this.internalconnect();

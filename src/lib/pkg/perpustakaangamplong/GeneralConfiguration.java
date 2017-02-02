@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.Random;
 
 public class GeneralConfiguration {
+    
+    
     public String getDate(){
         String Date = new SimpleDateFormat("dd/MM/YYYY").format(new Date());
         return Date;

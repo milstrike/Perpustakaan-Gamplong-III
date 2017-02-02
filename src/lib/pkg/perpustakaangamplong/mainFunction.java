@@ -117,7 +117,7 @@ public class mainFunction {
         globalVariabel.TanggalPinjam = TanggalPinjam;
         globalVariabel.TanggalKembali = TanggalKembali;
     }
-    
+
     public void hitungTanggalPengembalian(){
         String TanggalPinjam = globalVariabel.TanggalPinjam;
         String TanggalKembali = globalVariabel.TanggalKembali;
@@ -200,31 +200,31 @@ public class mainFunction {
         
             switch(bulan){
                 case "Januari":
-                    bulanConvert = "1";
+                    bulanConvert = "01";
                     break;
                 case "Februari":
-                    bulanConvert = "2";
+                    bulanConvert = "02";
                     break;
                 case "Maret":
-                    bulanConvert = "3";
+                    bulanConvert = "03";
                     break;
                 case "April":
-                    bulanConvert = "4";
+                    bulanConvert = "04";
                     break;
                 case "Mei":
-                    bulanConvert = "5";
+                    bulanConvert = "05";
                     break;
                 case "Juni":
-                    bulanConvert = "6";
+                    bulanConvert = "06";
                     break;
                 case "Juli":
-                    bulanConvert = "7";
+                    bulanConvert = "07";
                     break;
                 case "Agustus":
-                    bulanConvert = "8";
+                    bulanConvert = "08";
                     break;
                 case "September":
-                    bulanConvert = "9";
+                    bulanConvert = "09";
                     break;
                 case "Oktober":
                     bulanConvert = "10";

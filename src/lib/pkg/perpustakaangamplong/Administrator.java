@@ -221,6 +221,7 @@ public class Administrator extends javax.swing.JFrame {
         btnKonfirmasiPeminjaman = new javax.swing.JButton();
         btnHapusJudul = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
+        btnHapusSirkulasi = new javax.swing.JButton();
         panelKatalogGeneral = new javax.swing.JPanel();
         optionPencarianKatalog = new javax.swing.JComboBox<>();
         inputPencarianKatalog = new javax.swing.JTextField();
@@ -744,6 +745,14 @@ public class Administrator extends javax.swing.JFrame {
             }
         });
 
+        btnHapusSirkulasi.setText("Hapus Sirkulasi");
+        btnHapusSirkulasi.setEnabled(false);
+        btnHapusSirkulasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusSirkulasiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -777,6 +786,15 @@ public class Administrator extends javax.swing.JFrame {
                             .addComponent(btnKonfirmasiPeminjaman, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputTanggalPinjam)
+                            .addComponent(inputTanggalKembali, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(102, 102, 102))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnRefresh)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPinjamanKembali))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
@@ -784,17 +802,9 @@ public class Administrator extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addGap(85, 85, 85)
                                 .addComponent(btnSetTanggal))
-                            .addComponent(checkBebasDenda))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputTanggalPinjam)
-                            .addComponent(inputTanggalKembali, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(102, 102, 102))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPinjamanKembali)))
+                            .addComponent(checkBebasDenda)
+                            .addComponent(btnHapusSirkulasi))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -846,6 +856,8 @@ public class Administrator extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPinjamanKembali)
                     .addComponent(btnRefresh))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnHapusSirkulasi)
                 .addContainerGap())
         );
 
@@ -866,7 +878,7 @@ public class Administrator extends javax.swing.JFrame {
         );
         panelSirkulasiLayout.setVerticalGroup(
             panelSirkulasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 597, Short.MAX_VALUE)
+            .addGap(0, 635, Short.MAX_VALUE)
             .addGroup(panelSirkulasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelSirkulasiLayout.createSequentialGroup()
                     .addContainerGap()
@@ -2945,6 +2957,7 @@ public class Administrator extends javax.swing.JFrame {
         globalVariabel.IDSirkulasi = tabelSirkulasi.getValueAt(tabelSirkulasi.getSelectedRow(), 1).toString();
         db.selectDataSirkulasi();
         btnKonfirmasiPeminjaman.setEnabled(false);
+        btnHapusSirkulasi.setEnabled(true);
         btnTambahJudul.setEnabled(false);
         btnHapusJudul.setEnabled(false);
         btnSetTanggal.setEnabled(false);
@@ -3050,8 +3063,7 @@ public class Administrator extends javax.swing.JFrame {
         
         MediaPrintableArea mpa = new MediaPrintableArea(20, 20, width-20, height-20,MediaPrintableArea.MM);
         
-        HashPrintRequestAttributeSet hpras=new HashPrintRequestAttributeSet(mpa);
-        PrinterJob job = PrinterJob.getPrinterJob();    
+        HashPrintRequestAttributeSet hpras=new HashPrintRequestAttributeSet(mpa); 
         
         try {
             tampilanMultiFungsi.print(null, null, rootPaneCheckingEnabled, null, hpras, true);
@@ -3091,6 +3103,21 @@ public class Administrator extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnResetAplikasiActionPerformed
+
+    private void btnHapusSirkulasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusSirkulasiActionPerformed
+        db.deleteSirkulasi();
+        inputIDAnggota.setText("");
+        inputNamaAngfota.setText("");
+        inputTanggalPinjam.setText("");
+        inputTanggalKembali.setText("");
+        btnKonfirmasiPeminjaman.setEnabled(true);
+        btnTambahJudul.setEnabled(true);
+        btnHapusJudul.setEnabled(true);
+        btnSetTanggal.setEnabled(true);
+        btnPinjamanKembali.setRequestFocusEnabled(false);
+        JOptionPane.showMessageDialog(null, "Data Sirkulasi berhasil dihapus");
+        btnHapusSirkulasi.setEnabled(false);
+    }//GEN-LAST:event_btnHapusSirkulasiActionPerformed
 
     public void restartApplication() throws IOException, URISyntaxException
 {
@@ -3153,6 +3180,7 @@ public class Administrator extends javax.swing.JFrame {
     public static javax.swing.JButton btnHapusData;
     public static javax.swing.JButton btnHapusJudul;
     public static javax.swing.JButton btnHapusKeanggotaan;
+    private javax.swing.JButton btnHapusSirkulasi;
     public static javax.swing.JButton btnHapusUser;
     public static javax.swing.JButton btnKonfirmasiPeminjaman;
     public static javax.swing.JButton btnPencarianAnggota;
