@@ -1248,7 +1248,7 @@ public class dbAccess {
         String headerComponent = "<html><head><title>Laporan "+globalVariabel.jenisLaporan+" Perpustakaan Taman Bacaan Mentari Gamplong III Periode Bulan: "+globalVariabel.periodeBulan+" Tahun: "+globalVariabel.periodeTahun+"</title></head><body><p align: center><strong>LAPORAN "+jenisLaporan+" PERPUSTAKAAN TAMAN BACAAN MENTARI GAMPLONG III</strong></p><p align: center><strong>Periode "+globalVariabel.periodeBulan+" "+globalVariabel.periodeTahun+"</strong></p><p align: justify><table border=1 width=100%>";
         String theadComponent;
         String tbodyComponent = "";
-        String footerComponent = "</tbody></table></p><p align=justify>Dicetak tanggal: "+new GeneralConfiguration().getTime()+"</p></body></html>";
+        String footerComponent = "</tbody></table><br/><br/><table width=100% border=0><tr><td width=70% valign=top><p align=justify>Dicetak tanggal: "+new GeneralConfiguration().getTime()+"</td><td width=30% style=><p align=left style=padding-left:50%>Sleman, .......................<br/>Kepala Perpustakaan<br/><br/><br/>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/></p></td></p></tr></table></body></html>";
         
         int row = 1;
         
