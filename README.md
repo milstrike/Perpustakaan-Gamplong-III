@@ -15,5 +15,3 @@ Fitur-fitur aplikasi Perpustakaan Gamplong III adalah sebagai berikut:<br/>
 8. Pengaturan Akun<br/>
 9. Bantuan Penggunaan<br/>
 
-<h3>Kontak Pengembang</h3>
-Kontak kami melalui: <strong>farid_znr@yahoo.co.id</strong>
